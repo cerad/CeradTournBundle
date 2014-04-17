@@ -1,0 +1,7 @@
+cerad_tourn__welcome:
+    path:  /welcome
+    defaults: 
+        _controller: cerad_tourn__welcome__controller:action
+        _model:      cerad_tourn__welcome__model_factory
+        _template: '@CeradTourn\Welcome\WelcomePage.html.twig'
+        _project:    ~

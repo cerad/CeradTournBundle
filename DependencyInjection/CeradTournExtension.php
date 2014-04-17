@@ -24,5 +24,7 @@ class CeradTournExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+        $container->setParameter('cerad_tourn__bundle_dir',__DIR__.'/..');
     }
 }

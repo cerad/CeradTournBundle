@@ -1,2 +1,14 @@
-## YAML Template.
----
+services:
+  
+# ==========================================================
+# Action: Welcome
+  cerad_tourn__welcome__controller:
+    class: Cerad\Bundle\TournBundle\Action\Welcome\WelcomeController
+    calls:
+      - [setRouter,         ['@router']]
+      - [setTemplating,     ['@templating']]
+      - [setSecurityContext,['@security.context']]
+             
+  cerad_tourn__welcome__model_factory:
+    class: Cerad\Bundle\TournBundle\Action\Welcome\WelcomeModel
+

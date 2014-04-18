@@ -1,7 +1,39 @@
+# ===================================================
+# Override the create user person  to allows adding referee certification
+# Want to  break this into steps later on
+#
+# Creating a user when you already know the project is a bit different
+# From creating a user to be used for multiple projects
+cerad_tourn__user_person__create:
+  path: /user-person/create
+  defaults:
+    _model:      cerad_tourn__user_person__create_model_factory
+    _form:       cerad_tourn__user_person__create_form_factory
+    _controller: cerad_tourn__user_person__create_controller:action
+    _template: '@CeradTourn\UserPerson\Create\UserPersonCreatePage.html.twig'
+    _project:  ~
+    
+cerad_tourn__user_person__create_form:
+  path: /user-person/create-form
+  defaults:
+    _route:      cerad_tourn__user_person__create
+    _model:      cerad_tourn__user_person__create_model_factory
+    _form:       cerad_tourn__user_person__create_form_factory
+    _controller: cerad_tourn__user_person__create_controller:action
+    _template: '@CeradTourn\UserPerson\Create\UserPersonCreateForm.html.twig'
+    _project:  ~
+
+# =======================================================
 cerad_tourn__welcome:
-    path:  /welcome
-    defaults: 
-        _controller: cerad_tourn__welcome__controller:action
-        _model:      cerad_tourn__welcome__model_factory
-        _template: '@CeradTourn\Welcome\WelcomePage.html.twig'
-        _project:    ~
+  path:  /welcome
+  defaults: 
+    _controller: cerad_tourn__welcome__controller:action
+    _model:      cerad_tourn__welcome__model_factory
+    _template: '@CeradTourn\Welcome\WelcomePage.html.twig'
+    _project:    ~
+        
+cerad_tourn__index:
+  path:  /
+  defaults: 
+    _controller: cerad_tourn__index__controller:action
+

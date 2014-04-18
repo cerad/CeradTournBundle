@@ -1,5 +1,32 @@
 services:
   
+# =======================================================================
+# Action: CreateUserPerson
+# TODO: Paramertize the class names
+#
+  cerad_tourn__user_person__create_model_factory:
+    class: Cerad\Bundle\TournBundle\Action\UserPerson\Create\UserPersonCreateModel
+    calls:
+      - [setDispatcher,['@event_dispatcher']]
+    arguments:
+      - '@cerad_user__user_manager'
+      - '@cerad_person__person_repository'
+      - '%cerad_fed_role_default%'
+
+  cerad_tourn__user_person__create__form_factory:
+    class: Cerad\Bundle\TournBundle\Action\UserPerson\Create\UserPersonCreateFormFactory
+    calls:
+      - [setRouter,      ['@router']]
+      - [setFormFactory, ['@form.factory']]
+      - [setDispatcher,  ['@event_dispatcher']]
+             
+  cerad_tourn__user_person__create__controller:
+    class: Cerad\Bundle\TournBundle\Action\UserPerson\Create\UserPersonCreateController
+    calls:
+      - [setRouter,     ['@router']]
+      - [setTemplating, ['@templating']]
+             
+  
 # ==========================================================
 # Action: Welcome
   cerad_tourn__welcome__controller:
@@ -11,4 +38,14 @@ services:
              
   cerad_tourn__welcome__model_factory:
     class: Cerad\Bundle\TournBundle\Action\Welcome\WelcomeModel
+
+# ==========================================================
+# Action: Index
+  cerad_tourn__index__controller:
+    class: Cerad\Bundle\TournBundle\Action\Welcome\IndexController
+    calls:
+      - [setRouter,         ['@router']]
+    # - [setTemplating,     ['@templating']]
+      - [setSecurityContext,['@security.context']]
+
 

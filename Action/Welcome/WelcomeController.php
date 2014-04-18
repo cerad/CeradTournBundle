@@ -6,9 +6,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 //  Symfony\Component\Form\FormInterface;
 
-use Cerad\Bundle\CoreBundle\Action\Controller;
+use Cerad\Bundle\CoreBundle\Action\ActionController;
 
-class WelcomeController extends Controller
+class WelcomeController extends ActionController
 {
     public function action(Request $request, $model)
     {   
@@ -18,7 +18,7 @@ class WelcomeController extends Controller
             return $this->redirectResponse('cerad_tourn__home');
         }
         $tplData = array();
-        $tplData['project'] = $model->getProject();
+      //$tplData['project'] = $model->getProject();
         
         $tplName = $request->attributes->get('_template');
         

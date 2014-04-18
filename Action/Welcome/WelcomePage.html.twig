@@ -1,1 +1,11 @@
+{% extends '@CeradTourn/Layout.html.twig' %}
+{% block content %}
 <h1>Welcome</h1>
+
+<h3>Log in Below if you Already have an Account</h3>
+{{ render(route('cerad_user__user__login_form')) }}
+
+<h3>Create an Account</h3>
+{{ render(route('cerad_tourn__user_person__create_form')) }}
+
+{% endblock %}

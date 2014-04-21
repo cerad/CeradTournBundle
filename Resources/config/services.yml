@@ -1,6 +1,53 @@
 services:
   
 # =======================================================================
+# Action: RefereeScheduleShow
+#
+  cerad_tourn__referee_schedule__show_model_factory:
+    class: Cerad\Bundle\TournBundle\Action\RefereeSchedule\Show\RefereeScheduleShowModel
+    calls:
+      - [setDispatcher,['@event_dispatcher']]
+    arguments:
+      - '@cerad_game__game_repository'
+
+  cerad_tourn__referee_schedule__show_form_factory:
+    class: Cerad\Bundle\TournBundle\Action\RefereeSchedule\Show\RefereeScheduleShowFormFactory
+    calls:
+      - [setRouter,      ['@router']]
+      - [setFormFactory, ['@form.factory']]
+      - [setDispatcher,  ['@event_dispatcher']]
+             
+  cerad_tourn__referee_schedule__show_controller:
+    class: Cerad\Bundle\TournBundle\Action\RefereeSchedule\Show\RefereeScheduleShowController
+    calls:
+      - [setRouter,     ['@router']]
+      - [setTemplating, ['@templating']]
+      
+# =======================================================================
+# Action: GameScheduleShow
+#
+  cerad_tourn__game_schedule__show_model_factory:
+    class: Cerad\Bundle\TournBundle\Action\GameSchedule\Show\GameScheduleShowModel
+    calls:
+      - [setDispatcher,['@event_dispatcher']]
+    arguments:
+      - '@cerad_game__game_repository'
+      - '@cerad_person__person_repository'
+
+  cerad_tourn__game_schedule__show_form_factory:
+    class: Cerad\Bundle\TournBundle\Action\GameSchedule\Show\GameScheduleShowFormFactory
+    calls:
+      - [setRouter,      ['@router']]
+      - [setFormFactory, ['@form.factory']]
+      - [setDispatcher,  ['@event_dispatcher']]
+             
+  cerad_tourn__game_schedule__show_controller:
+    class: Cerad\Bundle\TournBundle\Action\GameSchedule\Show\GameScheduleShowController
+    calls:
+      - [setRouter,     ['@router']]
+      - [setTemplating, ['@templating']]
+
+# =======================================================================
 # Action: CreateUserPerson
 # TODO: Paramertize the class names
 #
@@ -27,6 +74,20 @@ services:
       - [setTemplating, ['@templating']]
              
   
+# ==========================================================
+# Action: Home
+  cerad_tourn__home__controller:
+    class: Cerad\Bundle\TournBundle\Action\Home\HomeController
+    calls:
+      - [setRouter,         ['@router']]
+      - [setTemplating,     ['@templating']]
+      - [setSecurityContext,['@security.context']]
+             
+  cerad_tourn__home__model_factory:
+    class: Cerad\Bundle\TournBundle\Action\Home\HomeModel
+    arguments:
+      - '@cerad_person__person_repository'
+    
 # ==========================================================
 # Action: Welcome
   cerad_tourn__welcome__controller:

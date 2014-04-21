@@ -1,3 +1,21 @@
+cerad_tourn__game_schedule__show:
+    path:  /game-schedule
+    defaults: 
+        _controller: cerad_tourn__game_schedule__show_controller:action
+        _model:      cerad_tourn__game_schedule__show_model_factory
+        _project:    ~
+        _template: '@CeradTourn\GameSchedule\Show\GameScheduleShowPage.html.twig'
+        
+cerad_tourn__referee_schedule__show:
+    path:  /referee-schedule
+    defaults: 
+        _controller: cerad_tourn__referee_schedule__show_controller:action
+        _model:      cerad_tourn__referee_schedule__show_model_factory
+        _form:       cerad_tourn__referee_schedule__show_form_factory
+        _project:    ~
+        _template: '@CeradTourn\RefereeSchedule\Show\RefereeScheduleShowPage.html.twig'
+
+
 # ===================================================
 # Override the create user person  to allows adding referee certification
 # Want to  break this into steps later on
@@ -31,6 +49,15 @@ cerad_tourn__welcome:
     _model:      cerad_tourn__welcome__model_factory
     _template: '@CeradTourn\Welcome\WelcomePage.html.twig'
     _project:    ~
+    
+cerad_tourn__home:
+  path:  /home
+  defaults: 
+    _controller: cerad_tourn__home__controller:action
+    _model:      cerad_tourn__home__model_factory
+    _template: '@CeradTourn\Home\HomePage.html.twig'
+    _project:    ~
+    _userPerson: ~
         
 cerad_tourn__index:
   path:  /

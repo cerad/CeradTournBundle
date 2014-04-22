@@ -1,11 +1,16 @@
 {% extends '@CeradTourn/Layout.html.twig' %}
 {% block content %}
 <h1>Welcome</h1>
-
-<h3>Log in Below if you Already have an Account</h3>
+<p>
+    This is the Area 5B Games referee signup site.
+    You will need to create an account using the bottom form even if you have used zayso in the past.
+<p>
+<h3>Log in if you have already created a Area 5B Account.</h3>
 {{ render(route('cerad_user__user__login_form')) }}
 
-<h3>Create an Account</h3>
+<h3>Create an Area 5B Account</h3>
 {{ render(route('cerad_tourn__user_person__create_form')) }}
-
+<p>
+    Note that after creating the account you will need to signin using your email and password.
+<p>
 {% endblock %}

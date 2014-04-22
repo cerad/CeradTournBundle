@@ -1,6 +1,31 @@
 services:
   
 # =======================================================================
+# Action: GameOfficialSelfAssign
+#
+  cerad_tourn__game_official__self_assign_model_factory:
+    class: Cerad\Bundle\TournBundle\Action\GameOfficial\AssignByUser\GameOfficialSelfAssignModel
+    calls:
+      - [setDispatcher,['@event_dispatcher']]
+    arguments:
+      - '@cerad_game__game_repository'
+      - '@cerad_person__person_repository'
+
+  cerad_tourn__game_official__self_assign_form_factory:
+    class: Cerad\Bundle\TournBundle\Action\GameOfficial\SelfAssign\GameOfficialSelfAssignFormFactory
+    calls:
+      - [setRouter,      ['@router']]
+      - [setFormFactory, ['@form.factory']]
+      - [setDispatcher,  ['@event_dispatcher']]
+             
+  cerad_tourn__game_official__self_assign_controller:
+    class: Cerad\Bundle\TournBundle\Action\GameOfficial\SelfAssign\GameOfficialSelfAssignController
+    calls:
+      - [setRouter,         ['@router']]
+      - [setTemplating,     ['@templating']]
+      - [setSecurityContext,['@security.context']]
+      
+# =======================================================================
 # Action: RefereeScheduleShow
 #
   cerad_tourn__referee_schedule__show_model_factory:

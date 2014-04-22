@@ -1,3 +1,4 @@
+
 cerad_tourn__game_schedule__show:
     path:  /game-schedule
     defaults: 
@@ -15,6 +16,28 @@ cerad_tourn__referee_schedule__show:
         _project:    ~
         _template: '@CeradTourn\RefereeSchedule\Show\RefereeScheduleShowPage.html.twig'
 
+cerad_tourn__game_official__self_assign:
+  path:  /game-official/game/{game}/slot/{slot}/self-assign
+  defaults: 
+    _controller: cerad_tourn__game_official__self_assign_controller:action
+    _model:      cerad_tourn__game_official__self_assign_model_factory
+    _form:       cerad_tourn__game_official__self_assign_form_factory
+    _template: '@CeradTourn\GameOfficial\SelfAssign\GameOfficialSelfAssignPage.html.twig'
+    _project:    ~
+    _userPerson: ~
+    
+# Game Official (singular) implies only one slot
+cerad_game__project__game_official__assign_by_user:
+    path:  /project/{_project}/game/{_game}/official/{_game_official}/assign-by-user
+    defaults:
+        _controller: cerad_game__project__game_official__assign_by_user__controller:assignAction
+        _model:      cerad_game__project__game_official__assign_by_user__model_factory
+        _form:       cerad_game__project__game_official__assign_by_user__form_factory
+        _view:       cerad_game__project__game_official__assign_by_user__view_factory
+        _template: '@CeradGame/Project/GameOfficial/AssignByUser/AssignByUserIndex.html.twig'
+        _redirect:   cerad_tourn_schedule_official_list
+        _role:       ROLE_USER
+        _user_person: required
 
 # ===================================================
 # Override the create user person  to allows adding referee certification
